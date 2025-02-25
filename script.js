@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.getElementById('centerButton');
+    const { animate } = window.Motion;
     
     button.addEventListener('click', () => {
-        alert('Button clicked!');
+        animate("#centerButton", { rotate: 360 }, { duration: 1 });
     });
 }); 
