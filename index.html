@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centered Button</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Import Motion library directly -->
-    <script src="https://cdn.jsdelivr.net/npm/motion@10/dist/motion.min.js"></script>
 </head>
 <body>
     <div class="container">
         <button id="centerButton">Click Me</button>
     </div>
     
-    <script src="script.js"></script>
+    <script type="module">
+        import { animate } from 'https://cdn.skypack.dev/motion';
+        window.Motion = { animate };
+        
+        let rotationDegrees = 0;
+        
+        document.getElementById('centerButton').addEventListener('click', () => {
+            const { animate } = window.Motion;
+            
+            // Increment rotation by 360 degrees each time
+            rotationDegrees += 360;
+            
+            animate("#centerButton", { 
+                rotate: rotationDegrees 
+            }, { 
+                duration: 1 
+            });
+            
+            console.log("Rotating to:", rotationDegrees);
+        });
+    </script>
 </body>
 </html> 
